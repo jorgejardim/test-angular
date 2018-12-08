@@ -3,14 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home/home.component';
-import { ContactComponent } from './pages/contact/contact/contact.component';
+
+import { DashboardLayoutComponent } from './layouts/dashboard/dashboard-layout/dashboard-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ContactComponent
+    DashboardLayoutComponent
   ],
   imports: [
     BrowserModule,

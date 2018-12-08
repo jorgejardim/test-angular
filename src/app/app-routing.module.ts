@@ -1,15 +1,33 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home/home.component';
-import { ContactComponent } from './pages/contact/contact/contact.component';
+import { DashboardLayoutComponent } from "./layouts/dashboard/dashboard-layout/dashboard-layout.component";
 
 const routes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'contact', component: ContactComponent }, 
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: '**', component: HomeComponent }
-]
+    { 
+        path: '', component: DashboardLayoutComponent,
+        children: [
+            {
+                path: 'home', loadChildren: './pages/home/home.module#HomeModule',
+                data: {
+                    breadcrumb: 'Início'
+                },
+            }
+        ]        
+    },
+    { 
+        path: '', component: DashboardLayoutComponent,
+        children: [
+            {
+                path: 'contact', loadChildren: './pages/contact/contact.module#ContactModule',
+                data: {
+                    breadcrumb: 'Contato'
+                },
+            }
+        ]
+    }, 
+    { path: '**', redirectTo: '/home' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
